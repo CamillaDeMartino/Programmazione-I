@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1610896432 source:c:\users\camil\onedrive\desktop\code blocks\progetto prog\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"Header.h"
+
+1610816990 source:c:\users\camil\onedrive\desktop\code blocks\progetto prog\header.c
+	<stdio.h>
+	<stdlib.h>
+	"Header.h"
+
+1610793863 c:\users\camil\onedrive\desktop\code blocks\progetto prog\header.h
+
+1610792634 source:c:\users\camil\onedrive\desktop\code blocks\progetto prog\labirinto.c
+	<stdio.h>
+	"Header.h"
+

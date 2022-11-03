@@ -1,0 +1,272 @@
+<HTML>
+<HEAD>
+<TITLE>
+
+Gestione Magazzino
+
+</TITLE>
+</HEAD>
+
+<style>
+
+body{
+  
+  background: url(images/blackboard2.jpg);
+  background-attachment: fixed;
+}
+
+h1{
+
+  text-align:center; 
+  color: white;
+  font-family: Verdana;
+}
+
+p{
+
+  color: #F5FFFA;
+  font-family: Verdana;
+  text-align: justify;
+  margin-top: 50px;
+}
+
+pre{
+  color: #F5FFFA;
+  font-size: 15px;
+
+}
+</style>
+
+<BODY>
+
+<h1>Gestione Magazzino</h1>
+
+<p>Consideriamo un magazzino di prodotti elettronici. Ogni prodotto è identificato da un
+codice, dal nome del prodotto, una specifica, la quantità di scorta nel magazzino e il
+costo.
+Si suppone che il numero totale di prodotti sono 20 e che la gestione viene effettuata per
+un totale di 10 giorni. Scrivere un programma che permette di gestire il magazzino.
+L’utente può scegliere di effettuare le seguenti operazioni:</p>
+<p>• Dato un giorno visualizzare i dati dei prodotti che sono sotto scorta
+(numero di prodotti minore di 5).</p>
+<p>• Dato un giorno visualizzare tutti i prodotti ordinati in base alla quantità
+venduta. </p>
+
+<hr width= 80% noshade size = 3>
+
+<h1>Main</h1>
+
+<pre>#include < stdio.h > 
+#include < stdlib.h > 
+#include "Header.h" 
+#include < time.h > 
+
+
+int main()
+{
+    int i,scelta;
+    Prodotto magazzino[20] ={{1,  "Auricolari", "Progettati da apple",       20, 15.00},
+                             {2,  "Alexa",      "Altoparlante intelligente", 20, 60.00},
+                             {3,  "Hard Disk",  "2 TB",                      20, 80.00},
+                             {4,  "Kindle",     "Schermo antiriflesso",      20, 80.00},
+                             {5,  "Mouse",      "Wireless",                  20, 10.50},
+                             {6,  "Tastiera",   "Wireless",                  20, 35.00},
+                             {7,  "Cavo USB",   "480 Megabit al secondo",    20, 4.00},
+                             {8,  "Scheda SD",  "64 GB",                     20, 9.50},
+                             {9,  "Webcam",     "1080P Full HD Video",       20, 30.00},
+                             {10, "Microfono",  "Pickup Cardioide",          20, 38.80},
+                             {11, "Polaroid",   "Istantanea",                20, 60.00},
+                             {12, "Joystick ",  "Wireless",                  20, 35.00},
+                             {13, "Proiettore", "230 Volt",                  20, 85.00},
+                             {14, "Smartwatch", "Bluetooth",                 20, 40.00},
+                             {15, "Treppiedi",  "127 Centimetri",            20, 17.80},
+                             {16, "Cordless",   "dual mode",                 20, 55.40},
+                             {17, "Caricatore", "Wireless",                  20, 25.00},
+                             {18, "Cuffie ",    "Bluetooth",                 20, 32.00},
+                             {19, "Tablet ",    "64 GB",                     20, 119.00},
+                             {20, "Drone",      "HD 720p",                   20, 70.00}};
+
+    printf( "\n**Benvenuti nel mio magazzino di elettronica!**\n" );
+    printf( "\nEcco i prodotti disponibili\n\n" );
+    visualizza_prodotti(magazzino);
+
+    printf( "\nQuale operazione si desidera eseguire?\n" );
+    printf( "1. Visualizzare i prodotti sotto scorta\n2. Visualizzare i prodotti piu' venduti\n" );
+
+    for (i = 0; i < 10; i++)          //tale ciclo consente all'utente di scegliere ogni giorno l'operazione da svolgere
+    {
+        printf( "\nGiorno %d\nScegli un opzione: ", i+1 );
+        scanf( "%d", &scelta );
+        scelta_utente(scelta,magazzino);
+    }
+</pre>
+
+<hr width= 80% noshade size = 3>
+<h1>Header.h</h1>
+
+<pre>#define HEADER_H_INCLUDED
+
+struct prodotto{                        //creiamo una scruct per poter gestire in maniera tabellare tutti i prodotti del magazzino
+    int codice;                         //ogni prodotto è identificato da un codice
+    char nome[20];                      //da un nome che trattiamo come un array di caratteri (stringa)
+    char specifica[50];                 //da una specifica (caratteristica del prodotto) trattata come stringa
+    int scorta;                         //da una scorta
+    float costo;                        //dal costo
+
+};
+typedef struct prodotto Prodotto;       //l'uso dell'istruzione typedef e del tipo struttura consente di creare un nuovo tipo di dato
+                                        //il nuovo dato Prodotto potrà essere utilizzato nel corso del programma
+void visualizza_prodotti(Prodotto []);  //function che stampa la struttura iniziale del magazzino, dunque ogni campo della struttura
+void scorta(Prodotto[]);                //function che calcola la scorta restate per ogni prodotto, in base alle vendite
+void scelta_utente(int, Prodotto []);   //function che consente all'utente di scegliere quale operazione svolgere
+void sotto_scorta(Prodotto[]);          //function che riporta i prodotti (e le le loro carattertiche) sotto scorta (prodotti minori di 5)
+void ordinamento(Prodotto[]);           //function che ordina in maniera crescente i prodotti(da quelli più venduti a quelli meno venduti)
+void classifica(Prodotto []);           //stampa la classifica derivante dall'ordinamento
+</pre>
+
+<hr width= 80% noshade size = 3>
+
+<h1>Libreria.c</h1>
+
+<pre>#include < stdio.h >
+#include < stdlib.h > 
+#include < time.h >
+#include "Header.h"
+
+//function che stampa tutti i prodotti presenti inizialmente nel magazzino
+void visualizza_prodotti(Prodotto magazzino[20])
+{
+   int i;
+    for(i = 0 ; i < 20 ; i++)    //stampiamo per ogni prodotto tutte le classi appartenenti alla struct
+        printf("Cod.: %d Nome: %s  Specifica: %s  Scorta: %d  Prezzo: %.2f$\n", magazzino[i].codice, magazzino[i].nome, magazzino[i].specifica, magazzino[i].scorta, magazzino[i].costo);
+
+}
+
+
+
+//function che stabilisce in maniera casuale quanti prodotti sono stati venduti, dunque la scorta relativa
+void scorta (Prodotto magazzino[20])
+{
+   int i, venduti;
+   srand(time(NULL));
+   Prodotto *articolo;                             //uso del puntatore per poter aggiornare il contenuto della struct
+   articolo = &magazzino[0];
+   for(i = 0; i < 20; i++)                         //per ogni prodotto la rand generà un numero da 0 a 20(massima scorta)
+   {
+        venduti = rand()%21;                       //il numero generato è la quantità di prodotto venduta quel giorno
+        if(articolo[i].scorta >= venduti)          //i prodotti venduti non possono essere maggiori alla quantità di scorta di magazzino
+        articolo[i].scorta -= venduti;             //calcoleremo quanti prodotti per ogni articoli sono ancora disponibili
+   }
+
+}
+
+
+
+//function che consente all'utente di scegliere tra le due opzioni
+void scelta_utente(int opzione, Prodotto magazzino[20])
+{
+    scorta(magazzino);
+    switch(opzione)                                     //uso del costrutto swtich per poter consentire la scelta
+    {
+    case 1:                                             //opzione 1: si visualizzano i prodotti sotto scorta
+        printf( "\nElementi sotto scorta\n" );
+        sotto_scorta(magazzino);
+        break;
+    case 2:                                             //opzione 2: si visualizzano i prodotti più venduti a quelli meno venduti
+        printf( "\nClassifica elementi piu' venduti\n" );
+        ordinamento(magazzino);
+        classifica(magazzino);
+        break;
+    default:                                            //non esistono opzioni differenti
+        printf ( "Opzione non esistente\n" );
+    }
+}
+
+
+
+
+//function che rileva i prodotti sotto scorta (la cui scorta restante è minore di 5)
+void sotto_scorta(Prodotto magazzino[20])
+{
+
+   int i;                                                          //poiché ogni giorno vengono effettuate delle vendite casuali, per ogni prodotto, grazie alla function scorta
+   for(i = 0; i < 20; i++)                                         //si scorre nuovamente la struct e rilevando solo quali sono i prodotti la cui classe scorta presenterà un numero inferiore a 5
+    {                                                              //dopodiché si procede stampandone tutte le caratteristiche
+        if(magazzino[i].scorta < 5 && magazzino[i].scorta >= 0 )   //si nota che ogni giorno la quantità dei prodotti sotto socorta aumenta, e che essi continueranno ad essere venduti finché non giungeranno a scorta 0
+         printf( "Cod.%d Nome: %s Specifica: %s Scorta: %d Costo: %.2f$\n", magazzino[i].codice, magazzino[i].nome, magazzino[i].specifica, magazzino[i].scorta, magazzino[i].costo);
+
+    }
+
+}
+
+
+
+
+
+//function che ordina i prodotti più venduti(da quello più venduto a quello meno venduto)
+//si nota che ciò non implica che in tale giorno i prodotti non possano essere venduti, sarà dunque considerata anche la possibilità che essi siano stati venduti il giorno stesso
+//in tal caso sarà una classifica aggiornata(potrà cioè presentare una scorta minore rispetto a quella precedente)
+void ordinamento (Prodotto magazzino[20])
+{
+    int el_da_ins, i,j;
+    Prodotto temp;
+    for(i = 1; i < 20; i++)                                   //si nota che l'algoritmo simula l'algoritmo di ordinamento di inserimento di minimo
+    {
+       el_da_ins = magazzino[i].scorta;                      //l'elemento da inserire è la scorta restante di ogni prodotto
+        j = i - 1;
+        while( j >= 0 && el_da_ins < magazzino[j].scorta)    //finché l'elemento da inserire è minore del precedente, effettuiamo uno scambio
+        {
+            temp = magazzino[j+1];                           //viene utilizzata una viariabile temp per consetire lo scambio non scoltato tra le calssi scorte
+            magazzino[j+1] = magazzino[j];                   //ma per tutte le classi, così che ci sarà sempre corrispondenza tra la scorta e le caratteristiche dell'articolo
+            magazzino[j] = temp;
+            j--;
+        }
+        magazzino[j+1].scorta = el_da_ins;
+    }
+
+}
+
+
+
+
+//function che stampa gli articoli ordinati dalla function ordinamento
+void classifica(Prodotto magazzino[20])
+{
+    int i;
+    for ( i = 0; i < 20; i++)                           //prende in input tutti i prodotti aggiornati e li stampa
+        printf ( "%d ---> Cod.%d  Nome: %s Scorta: %d\n",i+1, magazzino[i].codice, magazzino[i].nome ,magazzino[i].scorta );
+}</pre>
+
+
+<hr width= 80% noshade size = 3>
+
+<h1>Test</h2>
+
+<img src="images/Magazzino/Magazzino1.jpg" width="600" height="600" style="float: left; margin:30px 30px">
+<p>Il programma stampa i 20 possibili prodotti presenti in magazzino con una scorta massima di 20.<br>
+Ogni prodotto è identificato da un codice, un nome, una specifica, la scorta e il prezzo.<br>
+<br>
+Viene chiesto all'utente di inserire la sua scelta tra 1 e 2.<br>
+<br>
+L'opzione 1 scelta dall'utente consente di visualizzare i prodotti sotto scorta, ciò implica che ci sarà una quantità di vendita tale che la scorta restante sia inferiore di 5.<br>
+Di conseguenza vengono stampati tutte le caratteristiche dei prodotti interessati
+<br>
+Si nota che le scorte vengono aggiornate giorno per giorno poiché le vendite continueranno finché ci sarà la possibilità</p>
+<br>
+
+<hr width= 80% noshade size = 3>
+
+<img src="images/Magazzino/Magazzino2.jpg" width="400" height="400"style="float: left; margin: 30px 50px" >
+
+<p>In questo caso l'opzione 2 consente di visualizzare una classifica dei prodotti più venduti.<br>
+Essi presenteranno una scorta minore poiché le vendite saranno state maggiori.<br>
+Si noti come le scorte possano diminuire, infatti non è escluso che anche in quel giorno si possano vendere altri prodotti. </p>
+
+<hr width= 80% noshade size = 3>
+
+<img src="images/Magazzino/Magazzino3.jpg" width="400" height="400"style="float:left; margin:30px 50px" >
+<p>Anche il terzo giorno l'utente ha scelto l'opzione 2<br>
+Si noti l'articolo di codice 1. Sebbene il giorno due possedesse una scorta di 8, il giorno tre presenta una scorta di 4.
+Ciò significa che in quel giorno l'articolo è stato venduto 4 volte, se si scegliesse di visualizzare l'opzione 1 esso sarebbe un prodotto sotto scorta.</p>
+</BODY>
+</HTML>

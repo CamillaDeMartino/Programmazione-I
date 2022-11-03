@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1606424288 source:c:\users\camil\onedrive\desktop\code blocks\allenamento pt 2\main.c
+	<stdio.h>
+	"Prototipi.h"
+	<string.h>
+
+1606424564 source:c:\users\camil\onedrive\desktop\code blocks\allenamento pt 2\implementazioni.c
+	<stdio.h>
+	<string.h>
+
+1606424479 c:\users\camil\onedrive\desktop\code blocks\allenamento pt 2\prototipi.h
+

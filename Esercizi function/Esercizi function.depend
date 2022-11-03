@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1605779439 source:c:\users\camil\onedrive\desktop\code blocks\esercizi function\main.c
+	<stdio.h>
+	"Liberia.h"
+	"Liberia.h"
+
+1605779429 c:\users\camil\onedrive\desktop\code blocks\esercizi function\liberia.h
+	<string.h>
+
+1605779429 source:c:\users\camil\onedrive\desktop\code blocks\esercizi function\libreria.c
+	"Liberia.h"
+

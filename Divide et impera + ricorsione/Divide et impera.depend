@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1606380794 source:c:\users\camil\onedrive\desktop\code blocks\ricerca binaria\libreria.c
+	<stdio.h>
+	<string.h>
+
+1607983154 source:c:\users\camil\onedrive\desktop\code blocks\divide et impera\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Header.h"
+	<string.h>
+
+1607983138 c:\users\camil\onedrive\desktop\code blocks\divide et impera\header.h
+
+1607983229 source:c:\users\camil\onedrive\desktop\code blocks\divide et impera\libreria.c
+	<stdio.h>
+	<string.h>
+
+1608140026 source:c:\users\camil\onedrive\desktop\code blocks\divide et impera + ricorsione\libreria.c
+	<stdio.h>
+	<string.h>
+
+1608139968 source:c:\users\camil\onedrive\desktop\code blocks\divide et impera + ricorsione\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Header.h"
+	<string.h>
+
+1608139968 c:\users\camil\onedrive\desktop\code blocks\divide et impera + ricorsione\header.h
+

@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1609670028 source:c:\users\camil\onedrive\desktop\code blocks\progetto magazzino\header.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"Header.h"
+
+1610128416 c:\users\camil\onedrive\desktop\code blocks\progetto magazzino\header.h
+
+1610128568 source:c:\users\camil\onedrive\desktop\code blocks\progetto magazzino\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Header.h"
+	<time.h>
+
