@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1607943018 source:c:\users\camil\onedrive\desktop\code blocks\esercizi manuale c\main.c
+	<stdio.h>
+	<math.h>
+	"Header.h"
+
+1607943108 c:\users\camil\onedrive\desktop\code blocks\esercizi manuale c\header.h
+
+1607942943 source:c:\users\camil\onedrive\desktop\code blocks\esercizi manuale c\function.c
+	<math.h>
+	<stdio.h>
+
