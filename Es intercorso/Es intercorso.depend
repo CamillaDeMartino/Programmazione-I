@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1606226644 source:c:\users\camil\onedrive\desktop\code blocks\es intercorso\libreria.c
+	<stdio.h>
+	<string.h>
+
+1606146948 source:c:\users\camil\onedrive\desktop\code blocks\es intercorso\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Header.h"
+	<string.h>
+
+1606146948 c:\users\camil\onedrive\desktop\code blocks\es intercorso\header.h
+

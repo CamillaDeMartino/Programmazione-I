@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1608309730 source:c:\users\camil\onedrive\desktop\code blocks\struct\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Header.h"
+
+1608316060 source:c:\users\camil\onedrive\desktop\code blocks\struct\libreria.c
+	<stdio.h>
+	"Header.h"
+
+1608316464 c:\users\camil\onedrive\desktop\code blocks\struct\header.h
+
